@@ -15,11 +15,12 @@ const StartScreen: React.FC<StartScreenProps> = ({ onStart }) => {
 
   const handleStart = () => {
     if (selectedGoal && selectedDifficulty && selectedExperience) {
-      onStart({
+      const userInfo: UserInfo = {
         goal: selectedGoal,
         difficulty: selectedDifficulty,
         experience: selectedExperience
-      });
+      };
+      onStart(userInfo);
     }
   };
 
@@ -35,69 +36,80 @@ const StartScreen: React.FC<StartScreenProps> = ({ onStart }) => {
           <p className="subtitle-2">Тест 5-10 минутқа созылады</p>
         </div>
 
-        <div className="form-section">
-          <div className="form-group">
-            <label className="subtitle-3">Ағылшын үйренуде мақсатыңыз</label>
-            <div className="options-grid">
-              {goals.map((goal, index) => (
-                <label key={index} className={`option ${selectedGoal === goal ? 'selected' : ''}`}>
-                  <input
-                    type="radio"
-                    name="goal"
-                    value={goal}
-                    checked={selectedGoal === goal}
-                    onChange={(e) => setSelectedGoal(e.target.value)}
-                  />
-                  <span>{goal}</span>
-                </label>
-              ))}
-            </div>
+        <div className="form-group">
+          <label>Ағылшын үйренуде мақсатыңыз</label>
+          <div className="options-container">
+            {goals.map((goal, index) => (
+              <div
+                key={index}
+                className={`option ${selectedGoal === goal ? 'selected' : ''}`}
+                onClick={() => setSelectedGoal(goal)}
+              >
+                <input
+                  type="radio"
+                  name="goal"
+                  value={goal}
+                  checked={selectedGoal === goal}
+                  onChange={() => setSelectedGoal(goal)}
+                />
+                <span>{goal}</span>
+              </div>
+            ))}
           </div>
-
-          <div className="form-group">
-            <label className="subtitle-3">Тіл үйренуде сізге не қиындықтан тудырады</label>
-            <div className="options-grid">
-              {difficulties.map((difficulty, index) => (
-                <label key={index} className={`option ${selectedDifficulty === difficulty ? 'selected' : ''}`}>
-                  <input
-                    type="radio"
-                    name="difficulty"
-                    value={difficulty}
-                    checked={selectedDifficulty === difficulty}
-                    onChange={(e) => setSelectedDifficulty(e.target.value)}
-                  />
-                  <span>{difficulty}</span>
-                </label>
-              ))}
-            </div>
-          </div>
-
-          <div className="form-group">
-            <label className="subtitle-3">Қашаннан бері ағылшын тілін үйреніп жүрсіз?</label>
-            <div className="options-grid">
-              {experienceLevels.map((experience, index) => (
-                <label key={index} className={`option ${selectedExperience === experience ? 'selected' : ''}`}>
-                  <input
-                    type="radio"
-                    name="experience"
-                    value={experience}
-                    checked={selectedExperience === experience}
-                    onChange={(e) => setSelectedExperience(e.target.value)}
-                  />
-                  <span>{experience}</span>
-                </label>
-              ))}
-            </div>
-          </div>
-
-          <button 
-            className="start-button" 
-            onClick={handleStart}
-            disabled={!isFormComplete}
-          >
-            Тестті бастау
-          </button>
         </div>
+
+        <div className="form-group">
+          <label>Қиындық деңгейі</label>
+          <div className="options-container">
+            {difficulties.map((difficulty, index) => (
+              <div
+                key={index}
+                className={`option ${selectedDifficulty === difficulty ? 'selected' : ''}`}
+                onClick={() => setSelectedDifficulty(difficulty)}
+              >
+                <input
+                  type="radio"
+                  name="difficulty"
+                  value={difficulty}
+                  checked={selectedDifficulty === difficulty}
+                  onChange={() => setSelectedDifficulty(difficulty)}
+                />
+                <span>{difficulty}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="form-group">
+          <label>Тәжірибе деңгейі</label>
+          <div className="options-container">
+            {experienceLevels.map((experience, index) => (
+              <div
+                key={index}
+                className={`option ${selectedExperience === experience ? 'selected' : ''}`}
+                onClick={() => setSelectedExperience(experience)}
+              >
+                <input
+                  type="radio"
+                  name="experience"
+                  value={experience}
+                  checked={selectedExperience === experience}
+                  onChange={() => setSelectedExperience(experience)}
+                />
+                <span>{experience}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <div className="start-button">
+        <button 
+          onClick={handleStart}
+          disabled={!isFormComplete}
+        >
+          Тестті бастау
+        </button>
       </div>
     </div>
   );
