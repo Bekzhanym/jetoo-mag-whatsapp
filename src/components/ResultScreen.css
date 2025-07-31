@@ -1,0 +1,527 @@
+.result-screen {
+  min-height: 100vh;
+  width: 100vw;
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  margin: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.result-container {
+  background: white;
+  border-radius: 0;
+  padding: 60px 40px;
+  width: 100%;
+  height: 100vh;
+  box-shadow: none;
+  display: flex;
+  flex-direction: column;
+  max-width: none;
+  overflow-y: auto;
+}
+
+.result-header {
+  text-align: center;
+  margin-bottom: 50px;
+  padding-bottom: 30px;
+  border-bottom: 2px solid #5257de;
+}
+
+.result-title {
+  font-size: 3rem;
+  color: #5257de;
+  margin: 20px 0 0 0;
+  font-weight: bold;
+}
+
+.result-content {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  flex: 1;
+  max-width: 900px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.score-section {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  justify-content: center;
+  padding: 40px;
+  background: linear-gradient(135deg, #f8f9ff 0%, #f0f0ff 100%);
+  border-radius: 20px;
+}
+
+.score-circle {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background: #5257de;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  box-shadow: 0 15px 35px rgba(82, 87, 222, 0.3);
+}
+
+.score-number {
+  font-size: 3rem;
+  font-weight: bold;
+  line-height: 1;
+}
+
+.score-label {
+  font-size: 1.1rem;
+  opacity: 0.9;
+}
+
+.level-info {
+  flex: 1;
+}
+
+.level-title {
+  font-size: 2.5rem;
+  color: #5257de;
+  margin: 0 0 15px 0;
+  font-weight: bold;
+}
+
+.level-description {
+  font-size: 1.3rem;
+  color: #5257de;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.stats-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 25px;
+  padding: 30px;
+  background: #f8f9fa;
+  border-radius: 15px;
+}
+
+.stat-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(82, 87, 222, 0.1);
+}
+
+.stat-label {
+  font-size: 1.2rem;
+  color: #5257de;
+  font-weight: 500;
+}
+
+.stat-value {
+  font-size: 1.4rem;
+  color: #5257de;
+  font-weight: bold;
+}
+
+.user-info-section,
+.recommendation-section,
+.bonus-section,
+.contact-section {
+  padding: 30px;
+  background: #f8f9fa;
+  border-radius: 15px;
+}
+
+.section-title {
+  font-size: 1.5rem;
+  color: #5257de;
+  margin: 0 0 20px 0;
+  font-weight: 600;
+}
+
+.info-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.info-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 20px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(82, 87, 222, 0.1);
+}
+
+.info-label {
+  font-size: 1.2rem;
+  color: #5257de;
+  font-weight: 500;
+}
+
+.info-value {
+  font-size: 1.2rem;
+  color: #5257de;
+  font-weight: 600;
+  text-align: right;
+}
+
+.recommendation-text {
+  font-size: 1.3rem;
+  color: #5257de;
+  line-height: 1.6;
+  margin: 0;
+  padding: 20px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(82, 87, 222, 0.1);
+}
+
+.bonus-description,
+.contact-description {
+  font-size: 1.3rem;
+  color: #5257de;
+  line-height: 1.6;
+  margin: 0 0 25px 0;
+  text-align: center;
+}
+
+.bonus-button {
+  background: linear-gradient(135deg, #ff6b6b 0%, #ff8e53 100%);
+  color: white;
+  border: none;
+  padding: 25px 50px;
+  font-size: 1.5rem;
+  font-weight: bold;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 25px rgba(255, 107, 107, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  margin: 0 auto;
+  animation: bonusPulse 2s infinite;
+}
+
+@keyframes bonusPulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 10px 25px rgba(255, 107, 107, 0.3);
+  }
+  50% {
+    transform: scale(1.05);
+    box-shadow: 0 15px 35px rgba(255, 107, 107, 0.5);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 10px 25px rgba(255, 107, 107, 0.3);
+  }
+}
+
+.bonus-button:hover {
+  transform: translateY(-5px) scale(1.05);
+  box-shadow: 0 20px 40px rgba(255, 107, 107, 0.4);
+}
+
+.bonus-icon {
+  font-size: 2rem;
+  animation: giftShake 1s infinite;
+}
+
+@keyframes giftShake {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(-5deg);
+  }
+  75% {
+    transform: rotate(5deg);
+  }
+}
+
+.whatsapp-button {
+  background: linear-gradient(135deg, #25d366 0%, #128c7e 100%);
+  color: white;
+  border: none;
+  padding: 25px 50px;
+  font-size: 1.5rem;
+  font-weight: bold;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 25px rgba(37, 211, 102, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  margin: 0 auto;
+  animation: whatsappPulse 2s infinite;
+}
+
+@keyframes whatsappPulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 10px 25px rgba(37, 211, 102, 0.3);
+  }
+  50% {
+    transform: scale(1.05);
+    box-shadow: 0 15px 35px rgba(37, 211, 102, 0.5);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 10px 25px rgba(37, 211, 102, 0.3);
+  }
+}
+
+.whatsapp-button:hover {
+  transform: translateY(-5px) scale(1.05);
+  box-shadow: 0 20px 40px rgba(37, 211, 102, 0.4);
+}
+
+.whatsapp-icon {
+  font-size: 2rem;
+  animation: phoneShake 1s infinite;
+}
+
+@keyframes phoneShake {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(-3deg);
+  }
+  75% {
+    transform: rotate(3deg);
+  }
+}
+
+.restart-button {
+  background: #5257de;
+  color: white;
+  border: none;
+  padding: 25px 60px;
+  font-size: 1.5rem;
+  font-weight: bold;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 25px rgba(82, 87, 222, 0.3);
+  align-self: center;
+  margin-top: 20px;
+}
+
+.restart-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 35px rgba(82, 87, 222, 0.4);
+}
+
+/* Мобильная адаптация */
+@media (max-width: 768px) {
+  .result-container {
+    padding: 40px 20px;
+  }
+  
+  .result-header {
+    margin-bottom: 40px;
+  }
+  
+  .result-title {
+    font-size: 2.5rem;
+  }
+  
+  .result-content {
+    gap: 30px;
+  }
+  
+  .score-section {
+    flex-direction: column;
+    text-align: center;
+    gap: 30px;
+    padding: 30px;
+  }
+  
+  .score-circle {
+    width: 120px;
+    height: 120px;
+  }
+  
+  .score-number {
+    font-size: 2.5rem;
+  }
+  
+  .level-title {
+    font-size: 2rem;
+  }
+  
+  .level-description {
+    font-size: 1.1rem;
+  }
+  
+  .stats-section {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding: 25px;
+  }
+  
+  .stat-item {
+    padding: 15px;
+  }
+  
+  .stat-label {
+    font-size: 1.1rem;
+  }
+  
+  .stat-value {
+    font-size: 1.3rem;
+  }
+  
+  .user-info-section,
+  .recommendation-section,
+  .bonus-section,
+  .contact-section {
+    padding: 25px;
+  }
+  
+  .section-title {
+    font-size: 1.3rem;
+  }
+  
+  .info-item {
+    padding: 15px;
+  }
+  
+  .info-label,
+  .info-value {
+    font-size: 1.1rem;
+  }
+  
+  .recommendation-text {
+    font-size: 1.1rem;
+    padding: 15px;
+  }
+  
+  .bonus-description,
+  .contact-description {
+    font-size: 1.1rem;
+  }
+  
+  .bonus-button,
+  .whatsapp-button {
+    padding: 20px 40px;
+    font-size: 1.3rem;
+  }
+  
+  .bonus-icon {
+    font-size: 1.5rem;
+  }
+  
+  .restart-button {
+    padding: 20px 40px;
+    font-size: 1.3rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .result-container {
+    padding: 30px 15px;
+  }
+  
+  .result-title {
+    font-size: 2rem;
+  }
+  
+  .score-section {
+    padding: 25px;
+  }
+  
+  .score-circle {
+    width: 100px;
+    height: 100px;
+  }
+  
+  .score-number {
+    font-size: 2rem;
+  }
+  
+  .level-title {
+    font-size: 1.8rem;
+  }
+  
+  .level-description {
+    font-size: 1rem;
+  }
+  
+  .stats-section {
+    padding: 20px;
+  }
+  
+  .stat-item {
+    padding: 12px;
+  }
+  
+  .stat-label,
+  .stat-value {
+    font-size: 1rem;
+  }
+  
+  .user-info-section,
+  .recommendation-section,
+  .bonus-section,
+  .contact-section {
+    padding: 20px;
+  }
+  
+  .section-title {
+    font-size: 1.2rem;
+  }
+  
+  .info-item {
+    padding: 12px;
+  }
+  
+  .info-label,
+  .info-value {
+    font-size: 1rem;
+  }
+  
+  .recommendation-text {
+    font-size: 1rem;
+    padding: 12px;
+  }
+  
+  .bonus-description,
+  .contact-description {
+    font-size: 1rem;
+  }
+  
+  .bonus-button,
+  .whatsapp-button {
+    padding: 18px 30px;
+    font-size: 1.2rem;
+  }
+  
+  .bonus-icon {
+    font-size: 1.3rem;
+  }
+  
+  .restart-button {
+    padding: 18px 30px;
+    font-size: 1.2rem;
+  }
+} 

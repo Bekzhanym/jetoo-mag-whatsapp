@@ -1,0 +1,53 @@
+.logo-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo-image {
+  height: auto;
+  max-width: 100%;
+  object-fit: contain;
+}
+
+/* Размеры */
+.logo-container.small .logo-image {
+  height: 40px;
+}
+
+.logo-container.medium .logo-image {
+  height: 60px;
+}
+
+.logo-container.large .logo-image {
+  height: 80px;
+}
+
+/* Мобильная адаптация */
+@media (max-width: 768px) {
+  .logo-container.large .logo-image {
+    height: 70px;
+  }
+  
+  .logo-container.medium .logo-image {
+    height: 50px;
+  }
+  
+  .logo-container.small .logo-image {
+    height: 35px;
+  }
+}
+
+@media (max-width: 480px) {
+  .logo-container.large .logo-image {
+    height: 60px;
+  }
+  
+  .logo-container.medium .logo-image {
+    height: 45px;
+  }
+  
+  .logo-container.small .logo-image {
+    height: 30px;
+  }
+} 
