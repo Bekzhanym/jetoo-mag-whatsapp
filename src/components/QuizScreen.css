@@ -3,8 +3,7 @@
   width: 100vw;
   background: white;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  flex-direction: column;
   padding: 0;
   margin: 0;
   position: fixed;
@@ -12,26 +11,27 @@
   left: 0;
   right: 0;
   bottom: 0;
+  overflow-y: auto;
 }
 
 .quiz-container {
   background: white;
   border-radius: 0;
-  padding: 60px 40px;
+  padding: 20px;
   width: 100%;
-  height: 100vh;
+  min-height: 100vh;
   box-shadow: none;
   display: flex;
   flex-direction: column;
   max-width: none;
-  overflow-y: auto;
 }
 
 .quiz-header {
   text-align: center;
-  margin-bottom: 50px;
-  padding-bottom: 30px;
+  margin-bottom: 30px;
+  padding-bottom: 20px;
   border-bottom: 2px solid #5257de;
+  flex-shrink: 0;
 }
 
 .progress-section {
@@ -39,7 +39,7 @@
   flex-direction: column;
   align-items: center;
   gap: 15px;
-  margin-top: 30px;
+  margin-top: 20px;
 }
 
 .progress-bar {
@@ -67,15 +67,16 @@
   flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 40px;
+  gap: 30px;
   max-width: 800px;
   margin: 0 auto;
   width: 100%;
+  padding-bottom: 120px;
 }
 
 .question-section {
   text-align: center;
-  padding: 40px;
+  padding: 30px;
   background: linear-gradient(135deg, #f8f9ff 0%, #f0f0ff 100%);
   border-radius: 20px;
   animation: fadeIn 0.5s ease-out;
@@ -93,7 +94,7 @@
 }
 
 .question-text {
-  font-size: 2rem;
+  font-size: 1.8rem;
   color: #333;
   margin-bottom: 15px;
   font-weight: 600;
@@ -109,20 +110,20 @@
 .answers-section {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 15px;
 }
 
 .answer-option {
   display: flex;
   align-items: center;
-  padding: 25px;
+  padding: 20px;
   border: 2px solid #e0e0e0;
   border-radius: 15px;
   cursor: pointer;
   transition: all 0.3s ease;
   background: #fafafa;
   position: relative;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   animation: slideIn 0.3s ease-out;
 }
 
@@ -164,15 +165,15 @@
 }
 
 .answer-radio {
-  margin-right: 20px;
+  margin-right: 15px;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
 .radio-circle {
-  width: 24px;
-  height: 24px;
+  width: 22px;
+  height: 22px;
   border: 3px solid #e0e0e0;
   border-radius: 50%;
   position: relative;
@@ -197,31 +198,39 @@
 }
 
 .answer-text {
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   color: #333;
   flex: 1;
   line-height: 1.5;
 }
 
 .quiz-footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: white;
+  padding: 20px;
+  border-top: 2px solid #5257de;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 30px 0;
-  border-top: 2px solid #5257de;
-  margin-top: auto;
+  gap: 15px;
+  box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.1);
+  z-index: 100;
 }
 
 .prev-button,
 .next-button {
-  padding: 20px 40px;
-  font-size: 1.3rem;
+  padding: 18px 30px;
+  font-size: 1.2rem;
   font-weight: bold;
   border: none;
   border-radius: 50px;
   cursor: pointer;
   transition: all 0.3s ease;
-  min-width: 150px;
+  min-width: 140px;
+  flex: 1;
 }
 
 .prev-button {
@@ -261,16 +270,16 @@
 /* Мобильная адаптация */
 @media (max-width: 768px) {
   .quiz-container {
-    padding: 30px 20px;
+    padding: 15px;
   }
   
   .quiz-header {
-    margin-bottom: 30px;
-    padding-bottom: 20px;
+    margin-bottom: 25px;
+    padding-bottom: 15px;
   }
   
   .progress-section {
-    margin-top: 20px;
+    margin-top: 15px;
   }
   
   .progress-info {
@@ -278,11 +287,12 @@
   }
   
   .quiz-content {
-    gap: 30px;
+    gap: 25px;
+    padding-bottom: 100px;
   }
   
   .question-section {
-    padding: 25px;
+    padding: 20px;
   }
   
   .question-text {
@@ -294,11 +304,11 @@
   }
   
   .answers-section {
-    gap: 15px;
+    gap: 12px;
   }
   
   .answer-option {
-    padding: 20px;
+    padding: 18px;
     font-size: 1rem;
   }
   
@@ -307,28 +317,21 @@
   }
   
   .quiz-footer {
-    padding: 20px 0;
-    flex-direction: column;
-    gap: 15px;
-    position: sticky;
-    bottom: 0;
-    background: white;
-    border-top: 2px solid #5257de;
-    margin-top: 20px;
+    padding: 15px;
+    gap: 10px;
   }
   
   .prev-button,
   .next-button {
-    padding: 15px 30px;
+    padding: 15px 25px;
     font-size: 1.1rem;
     min-width: 120px;
-    width: 100%;
   }
 }
 
 @media (max-width: 480px) {
   .quiz-container {
-    padding: 20px 15px;
+    padding: 10px;
   }
   
   .question-text {
@@ -344,13 +347,13 @@
   }
   
   .quiz-footer {
-    padding: 15px 0;
-    gap: 10px;
+    padding: 12px;
   }
   
   .prev-button,
   .next-button {
-    padding: 12px 25px;
+    padding: 12px 20px;
     font-size: 1rem;
+    min-width: 100px;
   }
 } 
