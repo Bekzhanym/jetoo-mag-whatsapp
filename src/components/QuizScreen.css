@@ -310,6 +310,11 @@
     padding: 20px 0;
     flex-direction: column;
     gap: 15px;
+    position: sticky;
+    bottom: 0;
+    background: white;
+    border-top: 2px solid #5257de;
+    margin-top: 20px;
   }
   
   .prev-button,
@@ -336,6 +341,11 @@
   
   .answer-text {
     font-size: 0.9rem;
+  }
+  
+  .quiz-footer {
+    padding: 15px 0;
+    gap: 10px;
   }
   
   .prev-button,
