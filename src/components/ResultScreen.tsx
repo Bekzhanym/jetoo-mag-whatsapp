@@ -1,13 +1,11 @@
 import React from 'react';
 import { getLevel, getLevelDescription } from '../data/questions';
-import type { UserInfo } from '../data/questions';
 import './ResultScreen.css';
 
 interface ResultScreenProps {
   score: number;
   correctAnswers: number;
   totalQuestions: number;
-  userInfo: UserInfo;
   onGetBonus: () => void;
 }
 
@@ -15,29 +13,11 @@ const ResultScreen: React.FC<ResultScreenProps> = ({
   score,
   correctAnswers,
   totalQuestions,
-  userInfo,
   onGetBonus
 }) => {
   const level = getLevel(score);
   const percentage = Math.round((correctAnswers / totalQuestions) * 100);
   const levelDescription = getLevelDescription(level);
-
-  const getRecommendation = (level: string) => {
-    switch (level) {
-      case 'Beginner':
-        return 'Бастапқы деңгей. Жүйелі оқу және тәжірибе жинау керек.';
-      case 'Elementary':
-        return 'Бастапқы деңгей. Негізгі грамматика және сөздік қорын кеңейту керек.';
-      case 'Pre-intermediate':
-        return 'Орта деңгей. Күрделі грамматика және сөйлеу дағдыларын дамыту керек.';
-      case 'Intermediate':
-        return 'Жоғары орта деңгей. Кең аудитория алдында сөйлеу және жазу дағдыларын жетілдіру керек.';
-      case 'Upper-intermediate':
-        return 'Жоғары деңгей. Кәсіби деңгейдегі дағдыларды дамыту керек.';
-      default:
-        return 'Жүйелі оқу және тәжірибе жинау керек.';
-    }
-  };
 
   return (
     <div className="result-screen">
@@ -66,27 +46,6 @@ const ResultScreen: React.FC<ResultScreenProps> = ({
               <div className="stat-label">Пайыз</div>
               <div className="stat-value">{percentage}%</div>
             </div>
-          </div>
-
-          <div className="user-info-section">
-            <h3 className="section-title">Сіздің ақпаратыңыз</h3>
-            <div className="info-item">
-              <span className="info-label">Мақсат:</span>
-              <span className="info-value">{userInfo.goal}</span>
-            </div>
-            <div className="info-item">
-              <span className="info-label">Қиындық:</span>
-              <span className="info-value">{userInfo.difficulty}</span>
-            </div>
-            <div className="info-item">
-              <span className="info-label">Тәжірибе:</span>
-              <span className="info-value">{userInfo.experience}</span>
-            </div>
-          </div>
-
-          <div className="recommendation-section">
-            <h3 className="section-title">Ұсыныс</h3>
-            <p className="recommendation-text">{getRecommendation(level)}</p>
           </div>
 
           <div className="bonus-section">

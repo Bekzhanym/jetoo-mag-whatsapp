@@ -58,7 +58,6 @@ function App() {
           score={quizScore}
           correctAnswers={correctAnswers}
           totalQuestions={15}
-          userInfo={userInfo}
           onGetBonus={handleGetBonus}
         />
       )}
