@@ -2,6 +2,7 @@ import React from 'react';
 import { getLevel, getLevelDescription } from '../data/questions';
 import type { UserInfo } from '../data/questions';
 import Logo from './Logo';
+import Instagram from './Instagram';
 import './ResultScreen.css';
 
 interface ResultScreenProps {
@@ -13,11 +14,11 @@ interface ResultScreenProps {
   onGetBonus: () => void;
 }
 
-const ResultScreen: React.FC<ResultScreenProps> = ({ 
-  score, 
-  correctAnswers, 
-  totalQuestions, 
-  userInfo, 
+const ResultScreen: React.FC<ResultScreenProps> = ({
+  score,
+  correctAnswers,
+  totalQuestions,
+  userInfo,
   onRestart,
   onGetBonus
 }) => {
@@ -27,36 +28,36 @@ const ResultScreen: React.FC<ResultScreenProps> = ({
 
   const getRecommendation = (level: string) => {
     switch (level) {
-      case "Upper-intermediate":
-        return "Сіздің ағылшын тіліңіз өте жақсы! Келесі қадам - кәсіби ағылшын тілін дамыту және сертификат алу.";
-      case "Intermediate":
-        return "Жақсы деңгей! Көбірек тәжірибе жинау үшін ағылшын тілінде сөйлесу тобына қосылыңыз.";
-      case "Pre-intermediate":
-        return "Орташа деңгей. Грамматиканы күшейту және сөздік қорыңызды кеңейту керек.";
-      case "Elementary":
-        return "Негізгі деңгей. Көбірек оқу және тәжірибе жинау керек.";
-      case "Beginner":
-        return "Бастапқы деңгей. Жүйелі оқу және тәжірибе жинау керек.";
+      case 'Beginner':
+        return 'Бастапқы деңгей. Жүйелі оқу және тәжірибе жинау керек.';
+      case 'Elementary':
+        return 'Бастапқы деңгей. Негізгі грамматика және сөздік қорын кеңейту керек.';
+      case 'Pre-intermediate':
+        return 'Орта деңгей. Күрделі грамматика және сөйлеу дағдыларын дамыту керек.';
+      case 'Intermediate':
+        return 'Жоғары орта деңгей. Кең аудитория алдында сөйлеу және жазу дағдыларын жетілдіру керек.';
+      case 'Upper-intermediate':
+        return 'Жоғары деңгей. Кәсіби деңгейдегі дағдыларды дамыту керек.';
       default:
-        return "Жалпы ағылшын тілін үйренуге кеңес береміз.";
+        return 'Жүйелі оқу және тәжірибе жинау керек.';
     }
   };
 
   return (
     <div className="result-screen">
+      <Logo size="medium" />
+      <Instagram size="medium" />
       <div className="result-container">
         <div className="result-header">
-          <Logo size="medium" />
           <h1 className="result-title">Нәтижеңіз</h1>
         </div>
 
         <div className="result-content">
           <div className="score-section">
             <div className="score-circle">
-              <div className="score-number">{score}</div>
-              <div className="score-label">балл</div>
+              {score}
             </div>
-            <div className="level-info">
+            <div className="score-info">
               <h2 className="level-title">{level}</h2>
               <p className="level-description">{levelDescription}</p>
             </div>
@@ -64,30 +65,28 @@ const ResultScreen: React.FC<ResultScreenProps> = ({
 
           <div className="stats-section">
             <div className="stat-item">
-              <span className="stat-label">Дұрыс жауаптар:</span>
-              <span className="stat-value">{correctAnswers}/{totalQuestions}</span>
+              <div className="stat-label">Дұрыс жауаптар</div>
+              <div className="stat-value">{correctAnswers}/{totalQuestions}</div>
             </div>
             <div className="stat-item">
-              <span className="stat-label">Пайыз:</span>
-              <span className="stat-value">{percentage}%</span>
+              <div className="stat-label">Пайыз</div>
+              <div className="stat-value">{percentage}%</div>
             </div>
           </div>
 
           <div className="user-info-section">
-            <h3 className="section-title">Сіздің мәліметтеріңіз</h3>
-            <div className="info-grid">
-              <div className="info-item">
-                <span className="info-label">Мақсат:</span>
-                <span className="info-value">{userInfo.goal}</span>
-              </div>
-              <div className="info-item">
-                <span className="info-label">Қиындық:</span>
-                <span className="info-value">{userInfo.difficulty}</span>
-              </div>
-              <div className="info-item">
-                <span className="info-label">Тәжірибе:</span>
-                <span className="info-value">{userInfo.experience}</span>
-              </div>
+            <h3 className="section-title">Сіздің ақпаратыңыз</h3>
+            <div className="info-item">
+              <span className="info-label">Мақсат:</span>
+              <span className="info-value">{userInfo.goal}</span>
+            </div>
+            <div className="info-item">
+              <span className="info-label">Қиындық:</span>
+              <span className="info-value">{userInfo.difficulty}</span>
+            </div>
+            <div className="info-item">
+              <span className="info-label">Тәжірибе:</span>
+              <span className="info-value">{userInfo.experience}</span>
             </div>
           </div>
 
@@ -106,11 +105,13 @@ const ResultScreen: React.FC<ResultScreenProps> = ({
               Бонусты алу
             </button>
           </div>
-
-          <button className="restart-button" onClick={onRestart}>
-            Қайта бастау
-          </button>
         </div>
+      </div>
+
+      <div className="result-actions">
+        <button className="restart-button" onClick={onRestart}>
+          Қайта бастау
+        </button>
       </div>
     </div>
   );

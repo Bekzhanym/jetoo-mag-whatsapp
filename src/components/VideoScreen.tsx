@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { videoLinks } from '../data/videos';
 import Logo from './Logo';
+import Instagram from './Instagram';
 import WhatsAppIcon from './WhatsAppIcon';
 import './VideoScreen.css';
 
@@ -11,38 +12,38 @@ interface VideoScreenProps {
 
 const VideoScreen: React.FC<VideoScreenProps> = ({ level, onBack }) => {
   const [isVideoLoaded, setIsVideoLoaded] = useState(false);
-  
+
   const getVideoTitle = (level: string) => {
     switch (level) {
-      case "Upper-intermediate":
-        return "Upper-intermediate деңгейі үшін бонустық сабақ";
-      case "Intermediate":
-        return "Intermediate деңгейі үшін бонустық сабақ";
-      case "Pre-intermediate":
-        return "Pre-intermediate деңгейі үшін бонустық сабақ";
-      case "Elementary":
-        return "Elementary деңгейі үшін бонустық сабақ";
-      case "Beginner":
-        return "Beginner деңгейі үшін бонустық сабақ";
+      case 'Upper-intermediate':
+        return 'Жоғары деңгей - Кәсіби ағылшын тілі';
+      case 'Intermediate':
+        return 'Орта деңгей - Кең аудитория алдында сөйлеу';
+      case 'Pre-intermediate':
+        return 'Орта деңгей - Күрделі грамматика';
+      case 'Elementary':
+        return 'Бастапқы деңгей - Негізгі грамматика';
+      case 'Beginner':
+        return 'Бастапқы деңгей - Жүйелі оқу';
       default:
-        return "Бонустық сабақ";
+        return 'Ағылшын тілі сабағы';
     }
   };
 
   const getVideoDescription = (level: string) => {
     switch (level) {
-      case "Upper-intermediate":
-        return "Күрделі грамматикалық құрылымдар мен кәсіби ағылшын тілін үйреніңіз.";
-      case "Intermediate":
-        return "Орташа деңгейдегі грамматика мен сөйлесу дағдыларын дамытыңыз.";
-      case "Pre-intermediate":
-        return "Негізгі грамматикалық ережелер мен сөздік қорын кеңейтіңіз.";
-      case "Elementary":
-        return "Бастапқы грамматика мен күнделікті сөйлесу дағдыларын үйреніңіз.";
-      case "Beginner":
-        return "Ағылшын тілінің негіздерін және қарапайым сөйлесу дағдыларын үйреніңіз.";
+      case 'Upper-intermediate':
+        return 'Кәсіби деңгейдегі дағдыларды дамытуға арналған арнайы сабақ.';
+      case 'Intermediate':
+        return 'Кең аудитория алдында сөйлеу және жазу дағдыларын жетілдіру.';
+      case 'Pre-intermediate':
+        return 'Күрделі грамматика және сөйлеу дағдыларын дамыту.';
+      case 'Elementary':
+        return 'Негізгі грамматика және сөздік қорын кеңейту.';
+      case 'Beginner':
+        return 'Жүйелі оқу және тәжірибе жинауға арналған сабақ.';
       default:
-        return "Сіздің деңгейіңізге арналған арнайы сабақ.";
+        return 'Сіздің деңгейіңізге арналған арнайы сабақ.';
     }
   };
 
@@ -58,9 +59,10 @@ const VideoScreen: React.FC<VideoScreenProps> = ({ level, onBack }) => {
 
   return (
     <div className="video-screen">
+      <Logo size="medium" />
+      <Instagram size="medium" />
       <div className="video-container">
         <div className="video-header">
-          <Logo size="medium" />
           <h1 className="video-title">Бонустық сабақ</h1>
         </div>
 
@@ -71,34 +73,24 @@ const VideoScreen: React.FC<VideoScreenProps> = ({ level, onBack }) => {
           </div>
 
           <div className="video-player">
-            {videoUrl ? (
-              <div className="video-wrapper">
-                <iframe
-                  src={videoUrl}
-                  title={`${level} бонустық сабақ`}
-                  frameBorder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                  onLoad={handleVideoLoad}
-                  className="video-iframe"
-                ></iframe>
-                {!isVideoLoaded && (
-                  <div className="video-loading">
-                    <div className="play-button">
-                      <span className="play-icon">▶</span>
-                    </div>
-                    <p className="video-placeholder-text">Видео жүктелуде...</p>
+            <div className="video-wrapper">
+              {!isVideoLoaded && (
+                <div className="video-placeholder">
+                  <div className="play-button">
+                    <span className="play-icon">▶</span>
                   </div>
-                )}
-              </div>
-            ) : (
-              <div className="video-placeholder">
-                <div className="play-button">
-                  <span className="play-icon">▶</span>
+                  <p className="video-placeholder-text">Видео жүктелуде...</p>
                 </div>
-                <p className="video-placeholder-text">Видео қолжетімді емес</p>
-              </div>
-            )}
+              )}
+              <iframe
+                src={videoUrl}
+                title="JETOO ENGLISH Video Lesson"
+                className="video-iframe"
+                onLoad={handleVideoLoad}
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              ></iframe>
+            </div>
           </div>
 
           <div className="contact-section">
@@ -111,12 +103,12 @@ const VideoScreen: React.FC<VideoScreenProps> = ({ level, onBack }) => {
               WhatsApp арқылы байланысу
             </button>
           </div>
+        </div>
 
-          <div className="video-actions">
-            <button className="back-button" onClick={onBack}>
-              ← Нәтижеге қайту
-            </button>
-          </div>
+        <div className="video-actions">
+          <button className="back-button" onClick={onBack}>
+            ← Нәтижеге қайту
+          </button>
         </div>
       </div>
     </div>

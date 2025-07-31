@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { questions } from '../data/questions';
 import type { UserInfo } from '../data/questions';
 import Logo from './Logo';
+import Instagram from './Instagram';
 import './QuizScreen.css';
 
 interface QuizScreenProps {
@@ -60,9 +61,10 @@ const QuizScreen: React.FC<QuizScreenProps> = ({ onComplete }) => {
 
   return (
     <div className="quiz-screen">
+      <Logo size="medium" />
+      <Instagram size="medium" />
       <div className="quiz-container">
         <div className="quiz-header">
-          <Logo size="medium" />
           <div className="progress-section">
             <div className="progress-bar">
               <div className="progress-fill" style={{ width: `${progress}%` }}></div>

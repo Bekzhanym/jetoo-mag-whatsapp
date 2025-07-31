@@ -32,6 +32,7 @@
   padding-bottom: 15px;
   border-bottom: 2px solid #5257de;
   flex-shrink: 0;
+  padding-top: 60px;
 }
 
 .progress-section {
@@ -276,6 +277,7 @@
   .quiz-header {
     margin-bottom: 15px;
     padding-bottom: 10px;
+    padding-top: 50px;
   }
   
   .progress-section {
@@ -337,6 +339,7 @@
   .quiz-header {
     margin-bottom: 12px;
     padding-bottom: 8px;
+    padding-top: 45px;
   }
   
   .progress-section {

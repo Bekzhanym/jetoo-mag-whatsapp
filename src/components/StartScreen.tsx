@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { goals, difficulties, experienceLevels } from '../data/questions';
 import type { UserInfo } from '../data/questions';
-import Logo from './Logo';
 import './StartScreen.css';
 
 interface StartScreenProps {
@@ -30,7 +29,6 @@ const StartScreen: React.FC<StartScreenProps> = ({ onStart }) => {
     <div className="start-screen">
       <div className="start-container">
         <div className="start-header">
-          <Logo size="large" />
           <h1 className="title">Ағылшын тілі деңгейіңізді анықтаңыз</h1>
           <p className="subtitle">12 сұраққа жауап беріп, өзіңіздің деңгейіңізді біліңіз</p>
           <p className="subtitle-2">Тест 5-10 минутқа созылады</p>
