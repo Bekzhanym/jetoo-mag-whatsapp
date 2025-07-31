@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import WelcomeScreen from './components/WelcomeScreen';
-import StartScreen from './components/StartScreen';
 import QuizScreen from './components/QuizScreen';
 import ResultScreen from './components/ResultScreen';
 import VideoScreen from './components/VideoScreen';
@@ -8,21 +7,20 @@ import type { UserInfo } from './data/questions';
 import { getLevel } from './data/questions';
 import './App.css';
 
-type Screen = 'welcome' | 'start' | 'quiz' | 'result' | 'video';
+type Screen = 'welcome' | 'quiz' | 'result' | 'video';
 
 function App() {
   const [currentScreen, setCurrentScreen] = useState<Screen>('welcome');
-  const [userInfo, setUserInfo] = useState<UserInfo | null>(null);
+  const [userInfo, setUserInfo] = useState<UserInfo>({
+    goal: "ҰБТ-да таңдау пәнім",
+    difficulty: "Грамматика үйрену керек",
+    experience: "1 жылдан көп"
+  });
   const [quizScore, setQuizScore] = useState(0);
   const [correctAnswers, setCorrectAnswers] = useState(0);
   const [currentLevel, setCurrentLevel] = useState<string>('');
 
   const handleWelcomeStart = () => {
-    setCurrentScreen('start');
-  };
-
-  const handleStart = (info: UserInfo) => {
-    setUserInfo(info);
     setCurrentScreen('quiz');
   };
 
@@ -36,7 +34,6 @@ function App() {
 
   const handleRestart = () => {
     setCurrentScreen('welcome');
-    setUserInfo(null);
     setQuizScore(0);
     setCorrectAnswers(0);
     setCurrentLevel('');
@@ -56,22 +53,18 @@ function App() {
         <WelcomeScreen onStart={handleWelcomeStart} />
       )}
       
-      {currentScreen === 'start' && (
-        <StartScreen onStart={handleStart} />
-      )}
-      
-      {currentScreen === 'quiz' && userInfo && (
+      {currentScreen === 'quiz' && (
         <QuizScreen 
           userInfo={userInfo} 
           onComplete={handleQuizComplete} 
         />
       )}
       
-      {currentScreen === 'result' && userInfo && (
+      {currentScreen === 'result' && (
         <ResultScreen
           score={quizScore}
           correctAnswers={correctAnswers}
-          totalQuestions={12}
+          totalQuestions={15}
           userInfo={userInfo}
           onRestart={handleRestart}
           onGetBonus={handleGetBonus}

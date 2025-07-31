@@ -156,6 +156,42 @@ export const questions: Question[] = [
     ],
     correctAnswerIndex: 0,
     points: 1
+  },
+  {
+    id: 13,
+    question: "What is the correct plural form of \"child\"?",
+    options: [
+      "childs",
+      "children",
+      "childes",
+      "Нақты білмеймін."
+    ],
+    correctAnswerIndex: 1,
+    points: 1
+  },
+  {
+    id: 14,
+    question: "Choose the correct preposition: \"I'm interested _ learning English.\"",
+    options: [
+      "in",
+      "on",
+      "at",
+      "Нақты білмеймін."
+    ],
+    correctAnswerIndex: 0,
+    points: 1
+  },
+  {
+    id: 15,
+    question: "What is the correct sentence in passive voice?",
+    options: [
+      "The book was written by Shakespeare.",
+      "Shakespeare wrote the book.",
+      "The book is writing by Shakespeare.",
+      "Нақты білмеймін."
+    ],
+    correctAnswerIndex: 0,
+    points: 1
   }
 ];
 
@@ -181,10 +217,10 @@ export const experienceLevels = [
 ];
 
 export const getLevel = (score: number): string => {
-  if (score >= 11) return "Upper-intermediate";
-  if (score >= 9) return "Intermediate";
-  if (score >= 7) return "Pre-intermediate";
-  if (score >= 4) return "Elementary";
+  if (score >= 13) return "Upper-intermediate";
+  if (score >= 11) return "Intermediate";
+  if (score >= 9) return "Pre-intermediate";
+  if (score >= 6) return "Elementary";
   return "Beginner";
 };
 

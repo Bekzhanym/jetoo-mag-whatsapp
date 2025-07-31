@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { videoLinks } from '../data/videos';
 import Logo from './Logo';
-import Instagram from './Instagram';
 import WhatsAppIcon from './WhatsAppIcon';
 import './VideoScreen.css';
 
@@ -60,7 +59,6 @@ const VideoScreen: React.FC<VideoScreenProps> = ({ level, onBack }) => {
   return (
     <div className="video-screen">
       <Logo size="medium" />
-      <Instagram size="medium" />
       <div className="video-container">
         <div className="video-header">
           <h1 className="video-title">Бонустық сабақ</h1>

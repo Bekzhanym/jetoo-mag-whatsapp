@@ -1,8 +1,6 @@
 import React from 'react';
 import { getLevel, getLevelDescription } from '../data/questions';
 import type { UserInfo } from '../data/questions';
-import Logo from './Logo';
-import Instagram from './Instagram';
 import './ResultScreen.css';
 
 interface ResultScreenProps {
@@ -45,8 +43,6 @@ const ResultScreen: React.FC<ResultScreenProps> = ({
 
   return (
     <div className="result-screen">
-      <Logo size="medium" />
-      <Instagram size="medium" />
       <div className="result-container">
         <div className="result-header">
           <h1 className="result-title">Нәтижеңіз</h1>
@@ -106,12 +102,6 @@ const ResultScreen: React.FC<ResultScreenProps> = ({
             </button>
           </div>
         </div>
-      </div>
-
-      <div className="result-actions">
-        <button className="restart-button" onClick={onRestart}>
-          Қайта бастау
-        </button>
       </div>
     </div>
   );
