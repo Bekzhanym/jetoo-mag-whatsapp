@@ -8,7 +8,6 @@ interface ResultScreenProps {
   correctAnswers: number;
   totalQuestions: number;
   userInfo: UserInfo;
-  onRestart: () => void;
   onGetBonus: () => void;
 }
 
@@ -17,7 +16,6 @@ const ResultScreen: React.FC<ResultScreenProps> = ({
   correctAnswers,
   totalQuestions,
   userInfo,
-  onRestart,
   onGetBonus
 }) => {
   const level = getLevel(score);

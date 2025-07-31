@@ -11,7 +11,7 @@ type Screen = 'welcome' | 'quiz' | 'result' | 'video';
 
 function App() {
   const [currentScreen, setCurrentScreen] = useState<Screen>('welcome');
-  const [userInfo, setUserInfo] = useState<UserInfo>({
+  const [userInfo] = useState<UserInfo>({
     goal: "ҰБТ-да таңдау пәнім",
     difficulty: "Грамматика үйрену керек",
     experience: "1 жылдан көп"
@@ -30,13 +30,6 @@ function App() {
     const level = getLevel(score);
     setCurrentLevel(level);
     setCurrentScreen('result');
-  };
-
-  const handleRestart = () => {
-    setCurrentScreen('welcome');
-    setQuizScore(0);
-    setCorrectAnswers(0);
-    setCurrentLevel('');
   };
 
   const handleGetBonus = () => {
@@ -66,7 +59,6 @@ function App() {
           correctAnswers={correctAnswers}
           totalQuestions={15}
           userInfo={userInfo}
-          onRestart={handleRestart}
           onGetBonus={handleGetBonus}
         />
       )}
