@@ -101,12 +101,10 @@
   box-shadow: 0 8px 25px rgba(37, 90, 226, 0.3);
   transition: all 0.3s ease;
   overflow: hidden;
-  animation: jump 2s ease-in-out infinite;
 }
 
 .animated-button:hover {
-  animation-play-state: paused;
-  transform: translateY(-10px);
+  transform: translateY(-3px);
   box-shadow: 0 12px 35px rgba(37, 90, 226, 0.4);
   background: 
     radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.4) 0%, transparent 50%),
@@ -165,14 +163,7 @@
   }
 }
 
-@keyframes jump {
-  0%, 100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-8px);
-  }
-}
+
 
 /* Мобильная адаптация */
 @media (max-width: 768px) {
