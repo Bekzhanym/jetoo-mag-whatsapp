@@ -12,13 +12,30 @@ interface VideoScreenProps {
 const VideoScreen: React.FC<VideoScreenProps> = ({ level, onBack }) => {
   const [isVideoLoaded, setIsVideoLoaded] = useState(false);
 
+  const getLevelName = (level: string) => {
+    switch (level) {
+      case 'Upper-Intermediate':
+        return 'UPPER-INTERMEDIATE';
+      case 'Intermediate':
+        return 'INTERMEDIATE';
+      case 'Pre-Intermediate':
+        return 'PRE-INTERMEDIATE';
+      case 'Elementary':
+        return 'ELEMENTARY';
+      case 'Beginner':
+        return 'BEGINNER';
+      default:
+        return 'BEGINNER';
+    }
+  };
+
   const getVideoTitle = (level: string) => {
     switch (level) {
-      case 'Upper-intermediate':
+      case 'Upper-Intermediate':
         return 'Жоғары деңгей - Кәсіби ағылшын тілі';
       case 'Intermediate':
         return 'Орта деңгей - Кең аудитория алдында сөйлеу';
-      case 'Pre-intermediate':
+      case 'Pre-Intermediate':
         return 'Орта деңгей - Күрделі грамматика';
       case 'Elementary':
         return 'Бастапқы деңгей - Негізгі грамматика';
@@ -31,11 +48,11 @@ const VideoScreen: React.FC<VideoScreenProps> = ({ level, onBack }) => {
 
   const getVideoDescription = (level: string) => {
     switch (level) {
-      case 'Upper-intermediate':
+      case 'Upper-Intermediate':
         return 'Кәсіби деңгейдегі дағдыларды дамытуға арналған арнайы сабақ.';
       case 'Intermediate':
         return 'Кең аудитория алдында сөйлеу және жазу дағдыларын жетілдіру.';
-      case 'Pre-intermediate':
+      case 'Pre-Intermediate':
         return 'Күрделі грамматика және сөйлеу дағдыларын дамыту.';
       case 'Elementary':
         return 'Негізгі грамматика және сөздік қорын кеңейту.';
@@ -61,7 +78,7 @@ const VideoScreen: React.FC<VideoScreenProps> = ({ level, onBack }) => {
       <Logo size="medium" />
       <div className="video-container">
         <div className="video-header">
-          <h1 className="video-title">Бонустық сабақ</h1>
+          <h1 className="video-title">{getLevelName(level)}</h1>
         </div>
 
         <div className="video-content">
@@ -93,12 +110,9 @@ const VideoScreen: React.FC<VideoScreenProps> = ({ level, onBack }) => {
 
           <div className="contact-section">
             <h3 className="section-title">Толық ақпарат алу</h3>
-            <p className="contact-description">
-              Курстар туралы толық ақпарат алу үшін WhatsApp арқылы байланысыңыз!
-            </p>
             <button className="whatsapp-button" onClick={handleWhatsAppContact}>
               <WhatsAppIcon size={24} color="white" />
-              WhatsApp арқылы байланысу
+              МЕНЕДЖЕРМЕН БАЙЛАНЫСУ
             </button>
           </div>
         </div>

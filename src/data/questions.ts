@@ -156,86 +156,34 @@ export const questions: Question[] = [
     ],
     correctAnswerIndex: 0,
     points: 1
-  },
-  {
-    id: 13,
-    question: "What is the correct plural form of \"child\"?",
-    options: [
-      "childs",
-      "children",
-      "childes",
-      "Нақты білмеймін."
-    ],
-    correctAnswerIndex: 1,
-    points: 1
-  },
-  {
-    id: 14,
-    question: "Choose the correct preposition: \"I'm interested _ learning English.\"",
-    options: [
-      "in",
-      "on",
-      "at",
-      "Нақты білмеймін."
-    ],
-    correctAnswerIndex: 0,
-    points: 1
-  },
-  {
-    id: 15,
-    question: "What is the correct sentence in passive voice?",
-    options: [
-      "The book was written by Shakespeare.",
-      "Shakespeare wrote the book.",
-      "The book is writing by Shakespeare.",
-      "Нақты білмеймін."
-    ],
-    correctAnswerIndex: 0,
-    points: 1
   }
+  
 ];
 
-export const goals = [
-  "Шетелге оқуға түсу",
-  "ҰБТ-да таңдау пәнім",
-  "Work & Travel",
-  "Магистратура",
-  "Басқа"
-];
 
-export const difficulties = [
-  "Speaking нашар",
-  "Грамматика үйрену керек",
-  "Дисциплина жоқ",
-  "Жақсы мұғалім жоқ"
-];
 
-export const experienceLevels = [
-  "Енді кірісіп бастаймын",
-  "6 айдан көп",
-  "1 жылдан көп"
-];
+
 
 export const getLevel = (score: number): string => {
-  if (score >= 13) return "Upper-intermediate";
-  if (score >= 11) return "Intermediate";
-  if (score >= 9) return "Pre-intermediate";
-  if (score >= 6) return "Elementary";
+  if (score >= 11) return "Upper-Intermediate";
+  if (score >= 9) return "Intermediate";
+  if (score >= 7) return "Pre-Intermediate";
+  if (score >= 4) return "Elementary";
   return "Beginner";
 };
 
 export const getLevelDescription = (level: string): string => {
   switch (level) {
-    case "Upper-intermediate":
-      return "Күрделі мәтіндерді түсініп, нақты әрі еркін сөйлей алады.";
+    case "Upper-Intermediate":
+      return "Күрделі мәтіндерді түсінеді, нақты әрі жүйелі ой айта алады. Әртүрлі тақырыпта еркін сөйлеуге және пікірталасқа қатысуға мүмкіндік бар.";
     case "Intermediate":
-      return "Таныс тақырыпта өз ойын жеткізе алады, грамматикалық қателер болуы мүмкін.";
-    case "Pre-intermediate":
-      return "Қарапайым диалогтар мен мәтіндерді жартылай түсінеді, күрделі құрылымдар қиын.";
+      return "Таныс жағдайларда өз ойын жеткізе алады, пікір білдіруде белсенділік байқалады. Грамматикалық қателері болса да, жалпы мағына түсінікті түрде беріледі.";
+    case "Pre-Intermediate":
+      return "Қарапайым мәтіндер мен диалогтардың мағынасын жартылай түсінеді, таныс тақырыптарда ойын жеткізуге тырысады. Күрделі құрылымдарды қабылдай бастайды.";
     case "Elementary":
-      return "Негізгі грамматиканы меңгерген, күнделікті қарапайым сөйлемдер түсінікті.";
+      return "Негізгі грамматикалық құрылымдарды түсінеді, күнделікті сөйлемдерді құрастыра алады. Қарапайым сұрақтарға жауап беріп, қысқа диалогтарға қатыса алады.";
     case "Beginner":
-      return "Тілді жаңа бастаған, қарапайым сөздер мен тіркестерді біледі.";
+      return "Қарапайым сөздер мен тіркестер таныс. Жаңа сөздерді меңгеру мен тыңдау арқылы түсіну дағдысы қалыптасып келеді.";
     default:
       return "Деңгей анықталмады.";
   }
