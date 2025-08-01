@@ -29,9 +29,22 @@ const WelcomeScreen: React.FC<WelcomeScreenProps> = ({ onStart }) => {
           src={mobImage} 
           alt="JETOO ENGLISH Welcome" 
           className={`welcome-image ${imageLoaded ? 'loaded' : ''}`}
-          onClick={onStart}
           onLoad={() => setImageLoaded(true)}
         />
+        
+        {/* Анимированная кнопка */}
+        <div className="animated-button-container">
+          <button 
+            className="animated-button"
+            onClick={onStart}
+          >
+            <span className="button-text">START</span>
+            <span className="button-arrow">GO &gt;</span>
+            <div className="pulse-ring"></div>
+            <div className="pulse-ring pulse-ring-2"></div>
+            <div className="pulse-ring pulse-ring-3"></div>
+          </button>
+        </div>
       </div>
     </div>
   );

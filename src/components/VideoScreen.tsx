@@ -29,37 +29,24 @@ const VideoScreen: React.FC<VideoScreenProps> = ({ level, onBack }) => {
     }
   };
 
-  const getVideoTitle = (level: string) => {
-    switch (level) {
-      case 'Upper-Intermediate':
-        return 'Жоғары деңгей - Кәсіби ағылшын тілі';
-      case 'Intermediate':
-        return 'Орта деңгей - Кең аудитория алдында сөйлеу';
-      case 'Pre-Intermediate':
-        return 'Орта деңгей - Күрделі грамматика';
-      case 'Elementary':
-        return 'Бастапқы деңгей - Негізгі грамматика';
-      case 'Beginner':
-        return 'Бастапқы деңгей - Жүйелі оқу';
-      default:
-        return 'Ағылшын тілі сабағы';
-    }
+  const getVideoTitle = (_level: string) => {
+    return '';
   };
 
   const getVideoDescription = (level: string) => {
     switch (level) {
       case 'Upper-Intermediate':
-        return 'Кәсіби деңгейдегі дағдыларды дамытуға арналған арнайы сабақ.';
+        return 'Тақырып: Reading, Listening, Speaking & Grammar\nҰзақтығы: 8 минут\n\nСабақты соңына дейін көрген студентерімізге тағы да сыйлығымыз бар 😍';
       case 'Intermediate':
-        return 'Кең аудитория алдында сөйлеу және жазу дағдыларын жетілдіру.';
+        return 'Тақырып: Reading, Listening, Speaking & Grammar\nҰзақтығы: 8 минут\n\nСабақты соңына дейін көрген студентерімізге тағы да сыйлығымыз бар 😍';
       case 'Pre-Intermediate':
-        return 'Күрделі грамматика және сөйлеу дағдыларын дамыту.';
+        return 'Тақырып: Reading, Listening, Speaking & Grammar\nҰзақтығы: 8 минут\n\nСабақты соңына дейін көрген студентерімізге тағы да сыйлығымыз бар 😍';
       case 'Elementary':
-        return 'Негізгі грамматика және сөздік қорын кеңейту.';
+        return 'Тақырып: Reading, Listening, Speaking & Grammar\nҰзақтығы: 8 минут\n\nСабақты соңына дейін көрген студентерімізге тағы да сыйлығымыз бар 😍';
       case 'Beginner':
-        return 'Жүйелі оқу және тәжірибе жинауға арналған сабақ.';
+        return 'Тақырып: Reading, Listening, Speaking & Grammar\nҰзақтығы: 8 минут\n\nСабақты соңына дейін көрген студентерімізге тағы да сыйлығымыз бар 😍';
       default:
-        return 'Сіздің деңгейіңізге арналған арнайы сабақ.';
+        return 'Тақырып: Reading, Listening, Speaking & Grammar\nҰзақтығы: 8 минут\n\nСабақты соңына дейін көрген студентерімізге тағы да сыйлығымыз бар 😍';
     }
   };
 
@@ -83,7 +70,7 @@ const VideoScreen: React.FC<VideoScreenProps> = ({ level, onBack }) => {
 
         <div className="video-content">
           <div className="video-info">
-            <h2 className="level-title">{getVideoTitle(level)}</h2>
+            {getVideoTitle(level) && <h2 className="level-title">{getVideoTitle(level)}</h2>}
             <p className="video-description">{getVideoDescription(level)}</p>
           </div>
 
@@ -109,7 +96,6 @@ const VideoScreen: React.FC<VideoScreenProps> = ({ level, onBack }) => {
           </div>
 
           <div className="contact-section">
-            <h3 className="section-title">Толық ақпарат алу</h3>
             <button className="whatsapp-button" onClick={handleWhatsAppContact}>
               <WhatsAppIcon size={24} color="white" />
               МЕНЕДЖЕРМЕН БАЙЛАНЫСУ
