@@ -12,37 +12,41 @@ interface VideoScreenProps {
 const VideoScreen: React.FC<VideoScreenProps> = ({ level, onBack }) => {
   const [isVideoLoaded, setIsVideoLoaded] = useState(false);
 
-  const getVideoTitle = (level: string) => {
+  const getLevelName = (level: string) => {
     switch (level) {
-      case 'Upper-intermediate':
-        return 'Жоғары деңгей - Кәсіби ағылшын тілі';
+      case 'Upper-Intermediate':
+        return 'UPPER-INTERMEDIATE';
       case 'Intermediate':
-        return 'Орта деңгей - Кең аудитория алдында сөйлеу';
-      case 'Pre-intermediate':
-        return 'Орта деңгей - Күрделі грамматика';
+        return 'INTERMEDIATE';
+      case 'Pre-Intermediate':
+        return 'PRE-INTERMEDIATE';
       case 'Elementary':
-        return 'Бастапқы деңгей - Негізгі грамматика';
+        return 'ELEMENTARY';
       case 'Beginner':
-        return 'Бастапқы деңгей - Жүйелі оқу';
+        return 'BEGINNER';
       default:
-        return 'Ағылшын тілі сабағы';
+        return 'BEGINNER';
     }
+  };
+
+  const getVideoTitle = (_level: string) => {
+    return '';
   };
 
   const getVideoDescription = (level: string) => {
     switch (level) {
-      case 'Upper-intermediate':
-        return 'Кәсіби деңгейдегі дағдыларды дамытуға арналған арнайы сабақ.';
+      case 'Upper-Intermediate':
+        return 'Ұзақтығы: 11 минут\nСабақ соңында тосынсый бар 🎁';
       case 'Intermediate':
-        return 'Кең аудитория алдында сөйлеу және жазу дағдыларын жетілдіру.';
-      case 'Pre-intermediate':
-        return 'Күрделі грамматика және сөйлеу дағдыларын дамыту.';
+        return 'Ұзақтығы: 7 минут\nСабақ соңында тосынсый бар 🎁';
+      case 'Pre-Intermediate':
+        return 'Ұзақтығы: 9 минут\nСабақ соңында тосынсый бар 🎁';
       case 'Elementary':
-        return 'Негізгі грамматика және сөздік қорын кеңейту.';
+        return 'Ұзақтығы: 5 минут\nСабақ соңында тосынсый бар 🎁';
       case 'Beginner':
-        return 'Жүйелі оқу және тәжірибе жинауға арналған сабақ.';
+        return 'Ұзақтығы: 7 минут\nСабақ соңында тосынсый бар 🎁';
       default:
-        return 'Сіздің деңгейіңізге арналған арнайы сабақ.';
+        return 'Ұзақтығы: 8 минут\nСабақ соңында тосынсый бар 🎁';
     }
   };
 
@@ -75,12 +79,12 @@ const VideoScreen: React.FC<VideoScreenProps> = ({ level, onBack }) => {
       <Logo size="medium" />
       <div className="video-container">
         <div className="video-header">
-          <h1 className="video-title">Бонустық сабақ</h1>
+          <h1 className="video-title">{getLevelName(level)}</h1>
         </div>
 
         <div className="video-content">
           <div className="video-info">
-            <h2 className="level-title">{getVideoTitle(level)}</h2>
+            {getVideoTitle(level) && <h2 className="level-title">{getVideoTitle(level)}</h2>}
             <p className="video-description">{getVideoDescription(level)}</p>
           </div>
 
@@ -106,13 +110,9 @@ const VideoScreen: React.FC<VideoScreenProps> = ({ level, onBack }) => {
           </div>
 
           <div className="contact-section">
-            <h3 className="section-title">Толық ақпарат алу</h3>
-            <p className="contact-description">
-              Курстар туралы толық ақпарат алу үшін WhatsApp арқылы байланысыңыз!
-            </p>
             <button className="whatsapp-button" onClick={handleWhatsAppContact}>
               <WhatsAppIcon size={24} color="white" />
-              WhatsApp арқылы байланысу
+              МЕНЕДЖЕРМЕН БАЙЛАНЫСУ
             </button>
           </div>
         </div>

@@ -57,7 +57,7 @@ function App() {
         <ResultScreen
           score={quizScore}
           correctAnswers={correctAnswers}
-          totalQuestions={15}
+          totalQuestions={12}
           onGetBonus={handleGetBonus}
         />
       )}

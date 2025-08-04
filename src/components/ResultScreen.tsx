@@ -49,7 +49,6 @@ const ResultScreen: React.FC<ResultScreenProps> = ({
           </div>
 
           <div className="bonus-section">
-            <h3 className="section-title">Бонустық сыйлық</h3>
             <p className="bonus-description">
               Сіздің деңгейіңізге арналған арнайы видеосабақты тегін алыңыз!
             </p>
