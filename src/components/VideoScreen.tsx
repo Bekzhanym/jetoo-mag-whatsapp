@@ -53,6 +53,20 @@ const VideoScreen: React.FC<VideoScreenProps> = ({ level, onBack }) => {
   };
 
   const handleWhatsAppContact = () => {
+    // Meta Pixel tracking for button click
+    if (typeof window !== 'undefined' && (window as any).fbq) {
+      console.log('🔍 Meta Pixel: Tracking Lead event...');
+      (window as any).fbq('track', 'Lead', {
+        content_name: 'WhatsApp Contact Button',
+        content_category: 'Contact',
+        value: 1.00,
+        currency: 'KZT'
+      });
+      console.log('✅ Meta Pixel: Lead event sent successfully');
+    } else {
+      console.log('❌ Meta Pixel: fbq not available');
+    }
+    
     window.open('https://u.to/gSNSIg', '_blank');
   };
 

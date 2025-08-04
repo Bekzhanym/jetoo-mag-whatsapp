@@ -1,9 +1,9 @@
 export const videoLinks = {
-  "Upper-intermediate": "https://www.youtube.com/embed/2iWujbGOfTA",
-  "Intermediate": "https://www.youtube.com/embed/2iWujbGOfTA", 
-  "Pre-intermediate": "https://www.youtube.com/embed/2iWujbGOfTA",
-  "Elementary": "https://www.youtube.com/embed/2iWujbGOfTA",
-  "Beginner": "https://www.youtube.com/embed/2iWujbGOfTA"
+  "Upper-intermediate": "https://www.youtube.com/embed/0Wlr4QsfqRk",
+  "Intermediate": "https://www.youtube.com/embed/21ciGMvMVNo", 
+  "Pre-intermediate": "https://www.youtube.com/embed/WZTi-vQEF5s",
+  "Elementary": "https://www.youtube.com/embed/hhiz7ozqY5o",
+  "Beginner": "https://www.youtube.com/embed/-5MXpxiQmGs"
 };
 
 // Примеры использования:
