@@ -111,7 +111,8 @@ const UserForm: React.FC<UserFormProps> = ({
         {/* Main Title */}
         <div className="form-title-section">
           <h1 className="form-title">
-            Деңгейің сай видеосабақты тегін ал 🎁
+            Деңгейіңе сай видеосабақты 
+            тегін ал 🎁
           </h1>
         </div>
 
