@@ -1,13 +1,14 @@
 import { useState } from 'react';
 import WelcomeScreen from './components/WelcomeScreen';
 import QuizScreen from './components/QuizScreen';
+import UserForm from './components/UserForm';
 import ResultScreen from './components/ResultScreen';
 import VideoScreen from './components/VideoScreen';
 import type { UserInfo } from './data/questions';
 import { getLevel } from './data/questions';
 import './App.css';
 
-type Screen = 'welcome' | 'quiz' | 'result' | 'video';
+type Screen = 'welcome' | 'quiz' | 'userForm' | 'result' | 'video';
 
 function App() {
   const [currentScreen, setCurrentScreen] = useState<Screen>('welcome');
@@ -29,7 +30,15 @@ function App() {
     setCorrectAnswers(correct);
     const level = getLevel(score);
     setCurrentLevel(level);
+    setCurrentScreen('userForm');
+  };
+
+  const handleUserFormSubmit = () => {
     setCurrentScreen('result');
+  };
+
+  const handleUserFormBack = () => {
+    setCurrentScreen('quiz');
   };
 
   const handleGetBonus = () => {
@@ -50,6 +59,17 @@ function App() {
         <QuizScreen 
           userInfo={userInfo} 
           onComplete={handleQuizComplete} 
+        />
+      )}
+      
+      {currentScreen === 'userForm' && (
+        <UserForm
+          onSubmit={handleUserFormSubmit}
+          onBack={handleUserFormBack}
+          score={quizScore}
+          correctAnswers={correctAnswers}
+          totalQuestions={12}
+          level={currentLevel}
         />
       )}
       
