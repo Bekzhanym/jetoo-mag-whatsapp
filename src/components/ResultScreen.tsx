@@ -50,7 +50,7 @@ const ResultScreen: React.FC<ResultScreenProps> = ({
 
           <div className="bonus-section">
             <p className="bonus-description">
-              Сіздің деңгейіңізге арналған арнайы видеосабақты тегін алыңыз!
+            Деңгейіңе сай арнайы видеосабақты тегін ал!
             </p>
             <button className="bonus-button" onClick={onGetBonus}>
               <span className="bonus-icon">🎁</span>
