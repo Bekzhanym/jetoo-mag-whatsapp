@@ -79,6 +79,15 @@ const UserForm: React.FC<UserFormProps> = ({
         } else {
           // Ошибка при отправке
         }
+        // Meta Pixel tracking for form submit ("Бонусты аламын")
+        if (typeof window !== 'undefined' && (window as any).fbq) {
+          (window as any).fbq('track', 'Lead', {
+            content_name: 'UserForm Bonus Button',
+            content_category: 'Form',
+            value: 1.00,
+            currency: 'KZT'
+          });
+        }
       } catch (error) {
         console.error('Ошибка при отправке данных:', error);
       } finally {
