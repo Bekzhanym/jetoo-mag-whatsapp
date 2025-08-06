@@ -18,11 +18,10 @@ export const sendToGoogleSheets = async (data: TestResult): Promise<boolean> => 
       name: data.name,
       whatsapp: data.whatsapp,
       age: data.age,
+      level: data.level,
       score: data.score.toString(),
       correctAnswers: data.correctAnswers.toString(),
       totalQuestions: data.totalQuestions.toString(),
-      level: data.level,
-      percentage: data.percentage.toString(),
       timestamp: data.timestamp
     });
     
