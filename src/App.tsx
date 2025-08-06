@@ -5,6 +5,8 @@ import ResultScreen from './components/ResultScreen';
 import VideoScreen from './components/VideoScreen';
 import type { UserInfo } from './data/questions';
 import { getLevel } from './data/questions';
+import { openWhatsApp, createBonusMessage } from './utils/whatsapp';
+import { WHATSAPP_CONFIG } from './config/whatsapp';
 import './App.css';
 
 type Screen = 'welcome' | 'quiz' | 'result' | 'video';
@@ -33,7 +35,16 @@ function App() {
   };
 
   const handleGetBonus = () => {
-    setCurrentScreen('video');
+    // Создаем сообщение для WhatsApp
+    const message = createBonusMessage(
+      getLevel(quizScore),
+      quizScore,
+      correctAnswers,
+      15
+    );
+    
+    // Открываем WhatsApp с настроенным номером телефона
+    openWhatsApp(message, WHATSAPP_CONFIG.phoneNumber);
   };
 
   const handleBackFromVideo = () => {
