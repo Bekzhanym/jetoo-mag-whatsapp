@@ -32,7 +32,7 @@ function App() {
     setCorrectAnswers(correct);
     const level = getLevel(score);
     setCurrentLevel(level);
-    setCurrentScreen('userForm');
+    setCurrentScreen('result');
   };
 
   const handleUserFormSubmit = () => {

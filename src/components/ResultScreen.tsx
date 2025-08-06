@@ -19,6 +19,10 @@ const ResultScreen: React.FC<ResultScreenProps> = ({
   const percentage = Math.round((correctAnswers / totalQuestions) * 100);
   const levelDescription = getLevelDescription(level);
 
+  const handleBonusClick = () => {
+    onGetBonus();
+  };
+
   return (
     <div className="result-screen">
       <div className="result-container">
@@ -52,7 +56,7 @@ const ResultScreen: React.FC<ResultScreenProps> = ({
             <p className="bonus-description">
             Деңгейіңе сай арнайы видеосабақты тегін ал!
             </p>
-            <button className="bonus-button" onClick={onGetBonus}>
+            <button className="bonus-button" onClick={handleBonusClick}>
               <span className="bonus-icon">🎁</span>
               Бонусты алу
             </button>
