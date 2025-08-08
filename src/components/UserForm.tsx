@@ -117,13 +117,6 @@ const UserForm: React.FC<UserFormProps> = ({
           </button>
         </div>
 
-        {/* Main Title */}
-        <div className="form-title-section">
-          <h1 className="form-title">
-            Деңгейіңе сай видеосабақты 
-            тегін ал 🎁
-          </h1>
-        </div>
 
         {/* Form */}
         <form className="user-form" onSubmit={handleSubmit}>
@@ -172,7 +165,7 @@ const UserForm: React.FC<UserFormProps> = ({
               className="submit-button"
               disabled={isSubmitting}
             >
-              {isSubmitting ? 'Жіберілуде...' : 'Бонусты аламын'}
+              {isSubmitting ? 'Жіберілуде...' : 'Нәтижені көру'}
             </button>
           </div>
         </form>
