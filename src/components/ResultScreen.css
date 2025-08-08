@@ -194,19 +194,19 @@
   padding: 18px 40px;
   font-size: 1.3rem;
   font-weight: bold;
-  background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
+  background: linear-gradient(135deg, #25d366 0%, #128c7e 100%);
   color: white;
   border: none;
   border-radius: 50px;
   cursor: pointer;
   transition: all 0.3s ease;
-  box-shadow: 0 10px 25px rgba(255, 107, 53, 0.3);
-  animation: bonusPulse 2s infinite;
+  box-shadow: 0 10px 25px rgba(37, 211, 102, 0.3);
+  animation: whatsappPulse 2s infinite;
 }
 
 .bonus-button:hover {
   transform: translateY(-2px);
-  box-shadow: 0 15px 35px rgba(255, 107, 53, 0.4);
+  box-shadow: 0 15px 35px rgba(37, 211, 102, 0.4);
 }
 
 .bonus-icon {
@@ -249,6 +249,18 @@
   0%, 100% { transform: rotate(0deg); }
   25% { transform: rotate(-5deg); }
   75% { transform: rotate(5deg); }
+}
+
+@keyframes whatsappPulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.02);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
 
 /* Мобильная адаптация */

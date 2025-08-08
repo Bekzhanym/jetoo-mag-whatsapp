@@ -46,10 +46,7 @@ function App() {
   const handleGetBonus = () => {
     // Создаем сообщение для WhatsApp
     const message = createBonusMessage(
-      getLevel(quizScore),
-      quizScore,
-      correctAnswers,
-      15
+      getLevel(quizScore)
     );
     
     // Открываем WhatsApp с настроенным номером телефона

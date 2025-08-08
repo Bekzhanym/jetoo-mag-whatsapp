@@ -34,12 +34,7 @@ export const openWhatsApp = (message: string, phoneNumber?: string): void => {
  * @param totalQuestions - общее количество вопросов
  */
 export const createBonusMessage = (
-  level: string,
-  score: number,
-  correctAnswers: number,
-  totalQuestions: number
+  level: string
 ): string => {
-  const percentage = Math.round((correctAnswers / totalQuestions) * 100);
-  
-  return `Сәлем! \n\nМен тестті тапсырдым және бонустық сыйлықты алуға қызығушылық танытамын! \n\n Менің нәтижем:\n• Деңгей: ${level}\n• Ұпай: ${score}\n• Дұрыс жауаптар: ${correctAnswers}/${totalQuestions}\n• Пайыз: ${percentage}%\n\nСіздің деңгейіме арналған арнайы видеосабақты алуға қызығушылық танытамын! \n\nРахмет! `;
+  return `Сәлем! 20% жеңілдікпен курсқа тіркелгім келеді.\n\nДеңгейім: ${level}`;
 }; 
