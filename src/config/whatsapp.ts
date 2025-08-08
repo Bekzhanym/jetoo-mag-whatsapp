@@ -7,7 +7,7 @@ export const WHATSAPP_CONFIG = {
   // Пример: '+77001234567' для Казахстана
   // Измените этот номер на ваш реальный номер телефона
   // Или создайте файл .env с переменной VITE_WHATSAPP_PHONE
-  phoneNumber: import.meta.env.VITE_WHATSAPP_PHONE || '+77001234567',
+  phoneNumber: import.meta.env.VITE_WHATSAPP_PHONE || '+77755002730',
   
   // Сообщение по умолчанию (если не используется динамическое создание)
   defaultMessage: 'Сәлем! Мен тестті тапсырдым және бонустық сыйлықты алуға қызығушылық танытамын!',
