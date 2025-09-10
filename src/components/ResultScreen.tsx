@@ -17,8 +17,6 @@ const ResultScreen: React.FC<ResultScreenProps> = ({
   categoryResults,
   onGetBonus
 }) => {
-  const percentage = Math.round((correctAnswers / totalQuestions) * 100);
-
   const handleBonusClick = () => {
     onGetBonus();
   };
@@ -37,7 +35,6 @@ const ResultScreen: React.FC<ResultScreenProps> = ({
             </div>
             <div className="score-info">
               <h2 className="level-title">Тест аяқталды!</h2>
-              <p className="level-description">Сіз {correctAnswers} сұраққа дұрыс жауап бердіңіз</p>
             </div>
           </div>
 
@@ -46,28 +43,16 @@ const ResultScreen: React.FC<ResultScreenProps> = ({
               <div className="stat-label">Дұрыс жауаптар</div>
               <div className="stat-value">{correctAnswers}/{totalQuestions}</div>
             </div>
-            <div className="stat-item">
-              <div className="stat-label">Пайыз</div>
-              <div className="stat-value">{percentage}%</div>
-            </div>
           </div>
 
           <div className="category-results">
             <h3 className="category-title">Нәтижелер бойынша бөлімдер:</h3>
             {Object.entries(categoryResults).map(([category, result]) => {
-              const categoryPercentage = Math.round((result.correct / result.total) * 100);
               return (
                 <div key={category} className="category-item">
                   <div className="category-name">{category}</div>
                   <div className="category-stats">
                     <span className="category-score">{result.correct}/{result.total}</span>
-                    <span className="category-percentage">({categoryPercentage}%)</span>
-                  </div>
-                  <div className="category-progress">
-                    <div 
-                      className="category-progress-fill" 
-                      style={{ width: `${categoryPercentage}%` }}
-                    ></div>
                   </div>
                 </div>
               );
