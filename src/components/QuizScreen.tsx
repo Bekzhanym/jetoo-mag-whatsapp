@@ -6,18 +6,18 @@ import './QuizScreen.css';
 
 interface QuizScreenProps {
   userInfo: UserInfo;
-  onComplete: (score: number, correctAnswers: number) => void;
+  onComplete: (score: number, correctAnswers: number, categoryResults: { [category: string]: { correct: number; total: number } }) => void;
 }
 
 const QuizScreen: React.FC<QuizScreenProps> = ({ onComplete }) => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
-  const [selectedAnswer, setSelectedAnswer] = useState<number | null>(null);
-  const [answers, setAnswers] = useState<(number | null)[]>(new Array(questions.length).fill(null));
+  const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
+  const [answers, setAnswers] = useState<(string | null)[]>(new Array(questions.length).fill(null));
   const [score, setScore] = useState(0);
   const [showNextButton, setShowNextButton] = useState(false);
 
-  const handleAnswerSelect = (answerIndex: number) => {
-    setSelectedAnswer(answerIndex);
+  const handleAnswerSelect = (answerKey: string) => {
+    setSelectedAnswer(answerKey);
     setShowNextButton(true);
   };
 
@@ -29,8 +29,8 @@ const QuizScreen: React.FC<QuizScreenProps> = ({ onComplete }) => {
 
       // Проверяем правильность ответа
       const currentQ = questions[currentQuestion];
-      if (selectedAnswer === currentQ.correctAnswerIndex) {
-        setScore(score + currentQ.points);
+      if (selectedAnswer === currentQ.correct_option) {
+        setScore(score + 1);
       }
 
       if (currentQuestion < questions.length - 1) {
@@ -38,11 +38,25 @@ const QuizScreen: React.FC<QuizScreenProps> = ({ onComplete }) => {
         setSelectedAnswer(null);
         setShowNextButton(false);
       } else {
-        // Тест завершен
+        // Тест завершен - подсчитываем результаты по категориям
+        const categoryResults: { [category: string]: { correct: number; total: number } } = {};
+        
+        questions.forEach((question, index) => {
+          const category = question.category;
+          if (!categoryResults[category]) {
+            categoryResults[category] = { correct: 0, total: 0 };
+          }
+          categoryResults[category].total += 1;
+          if (newAnswers[index] === question.correct_option) {
+            categoryResults[category].correct += 1;
+          }
+        });
+
         const correctAnswers = newAnswers.filter((answer, index) => 
-          answer === questions[index].correctAnswerIndex
+          answer === questions[index].correct_option
         ).length;
-        onComplete(score + (selectedAnswer === currentQ.correctAnswerIndex ? currentQ.points : 0), correctAnswers);
+        
+        onComplete(score + (selectedAnswer === currentQ.correct_option ? 1 : 0), correctAnswers, categoryResults);
       }
     }
   };
@@ -54,6 +68,7 @@ const QuizScreen: React.FC<QuizScreenProps> = ({ onComplete }) => {
       setShowNextButton(answers[currentQuestion - 1] !== null);
     }
   };
+
 
   const currentQ = questions[currentQuestion];
   const progress = ((currentQuestion + 1) / questions.length) * 100;
@@ -75,25 +90,26 @@ const QuizScreen: React.FC<QuizScreenProps> = ({ onComplete }) => {
 
         <div className="quiz-content">
           <div className="question-section">
-            <h2 className="question-text">{currentQ.question}</h2>
+            <h2 className="question-text">{currentQ.text}</h2>
             <p className="question-hint">Бір жауапты таңдаңыз</p>
           </div>
 
           <div className="answers-section">
-            {currentQ.options.map((option, index) => (
+            {Object.entries(currentQ.options).map(([key, option]) => (
               <div
-                key={index}
-                className={`answer-option ${selectedAnswer === index ? 'selected' : ''}`}
-                onClick={() => handleAnswerSelect(index)}
+                key={key}
+                className={`answer-option ${selectedAnswer === key ? 'selected' : ''}`}
+                onClick={() => handleAnswerSelect(key)}
               >
                 <div className="answer-radio">
-                  <div className={`radio-circle ${selectedAnswer === index ? 'selected' : ''}`}></div>
+                  <div className={`radio-circle ${selectedAnswer === key ? 'selected' : ''}`}></div>
                 </div>
                 <span className="answer-text">{option}</span>
               </div>
             ))}
           </div>
         </div>
+
 
         <div className="quiz-footer">
           <button 

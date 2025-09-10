@@ -5,7 +5,6 @@ import WhatsAppIcon from './WhatsAppIcon';
 import './VideoScreen.css';
 
 interface VideoScreenProps {
-  level: string;
   onBack: () => void;
 }
 

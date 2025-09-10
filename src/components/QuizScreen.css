@@ -72,7 +72,7 @@
   max-width: 800px;
   margin: 0 auto;
   width: 100%;
-  padding-bottom: 100px;
+  padding-bottom: 80px; /* Отступ для footer */
 }
 
 .question-section {
@@ -268,6 +268,7 @@
   transform: none;
 }
 
+
 /* Мобильная адаптация */
 @media (max-width: 768px) {
   .quiz-container {
@@ -329,6 +330,7 @@
     font-size: 1rem;
     min-width: 100px;
   }
+
 }
 
 @media (max-width: 480px) {
@@ -391,4 +393,5 @@
     font-size: 0.9rem;
     min-width: 80px;
   }
+
 } 

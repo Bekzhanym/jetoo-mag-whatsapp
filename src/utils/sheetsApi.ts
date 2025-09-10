@@ -4,13 +4,10 @@ interface TestResult {
   age: string;
   score: number;
   correctAnswers: number;
-  totalQuestions: number;
-  level: string;
-  percentage: number;
   timestamp: string;
 }
 
-const GOOGLE_APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzjerJdD9pdvv2r2rP9ranXeKctdpop0yUc17iB5Up69wxsYgZLI4ytrK1qUOKEBXL-/exec';
+const GOOGLE_APPS_SCRIPT_URL = import.meta.env.VITE_GOOGLE_APPS_SCRIPT_URL;
 
 export const sendToGoogleSheets = async (data: TestResult): Promise<boolean> => {
   try {
@@ -18,10 +15,8 @@ export const sendToGoogleSheets = async (data: TestResult): Promise<boolean> => 
       name: data.name,
       whatsapp: data.whatsapp,
       age: data.age,
-      level: data.level,
       score: data.score.toString(),
       correctAnswers: data.correctAnswers.toString(),
-      totalQuestions: data.totalQuestions.toString(),
       timestamp: data.timestamp
     });
     
@@ -59,20 +54,13 @@ export const prepareTestData = (
   formData: { name: string; whatsapp: string; age: string },
   score: number,
   correctAnswers: number,
-  totalQuestions: number,
-  level: string
 ): TestResult => {
-  const percentage = Math.round((correctAnswers / totalQuestions) * 100);
-  
   return {
     name: formData.name,
     whatsapp: formData.whatsapp,
     age: formData.age,
     score,
     correctAnswers,
-    totalQuestions,
-    level,
-    percentage,
     timestamp: new Date().toISOString(),
   };
 }; 

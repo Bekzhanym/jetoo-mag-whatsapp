@@ -27,14 +27,8 @@ export const openWhatsApp = (message: string, phoneNumber?: string): void => {
 };
 
 /**
- * Создает сообщение для бонуса на основе результатов теста
- * @param level - уровень пользователя
- * @param score - количество баллов
- * @param correctAnswers - количество правильных ответов
- * @param totalQuestions - общее количество вопросов
+ * Создает сообщение для бонуса
  */
-export const createBonusMessage = (
-  level: string
-): string => {
-  return `Сәлем! 20% жеңілдікпен курсқа тіркелгім келеді.\n\nДеңгейім: ${level}`;
+export const createBonusMessage = (): string => {
+  return `Сәлем! 20% жеңілдікпен курсқа тіркелгім келеді.`;
 }; 

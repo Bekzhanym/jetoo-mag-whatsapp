@@ -24,53 +24,6 @@
   position: relative;
 }
 
-.loading-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: white;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  z-index: 5;
-}
-
-.loading-spinner {
-  width: 50px;
-  height: 50px;
-  border: 4px solid #f3f3f3;
-  border-top: 4px solid #5257de;
-  border-radius: 50%;
-  animation: spin 1s linear infinite;
-  margin-bottom: 20px;
-}
-
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-
-.loading-overlay p {
-  color: #5257de;
-  font-size: 1.2rem;
-  font-weight: 500;
-}
-
-.welcome-image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-  transition: opacity 0.3s ease;
-  opacity: 0;
-}
-
-.welcome-image.loaded {
-  opacity: 1;
-}
 
 /* Анимированная кнопка */
 .animated-button-container {

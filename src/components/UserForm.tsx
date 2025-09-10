@@ -14,17 +14,13 @@ interface UserFormProps {
   onBack: () => void;
   score: number;
   correctAnswers: number;
-  totalQuestions: number;
-  level: string;
 }
 
 const UserForm: React.FC<UserFormProps> = ({ 
   onSubmit, 
   onBack, 
   score, 
-  correctAnswers, 
-  totalQuestions, 
-  level 
+  correctAnswers
 }) => {
   const [formData, setFormData] = useState<UserFormData>({
     name: '',
@@ -44,8 +40,12 @@ const UserForm: React.FC<UserFormProps> = ({
 
     if (!formData.whatsapp.trim()) {
       newErrors.whatsapp = 'WhatsApp нөміріңізді енгізіңіз';
-    } else if (!/^\+?[0-9\s\-\(\)]+$/.test(formData.whatsapp)) {
-      newErrors.whatsapp = 'Дұрыс нөмір енгізіңіз';
+    } else {
+      // Проверяем, что номер содержит достаточно цифр (минимум 10)
+      const phoneDigits = formData.whatsapp.replace(/\D/g, '');
+      if (phoneDigits.length < 10) {
+        newErrors.whatsapp = 'Дұрыс нөмір енгізіңіз';
+      }
     }
 
     if (!formData.age.trim()) {
@@ -64,12 +64,16 @@ const UserForm: React.FC<UserFormProps> = ({
       setIsSubmitting(true);
       
       try {
+        // Очищаем номер телефона от форматирования перед отправкой
+        const cleanFormData = {
+          ...formData,
+          whatsapp: formData.whatsapp.replace(/\D/g, '') // Убираем все символы кроме цифр
+        };
+
         const testData = prepareTestData(
-          formData,
+          cleanFormData,
           score,
-          correctAnswers,
-          totalQuestions,
-          level
+          correctAnswers
         );
 
         const success = await sendToGoogleSheets(testData);
@@ -97,8 +101,46 @@ const UserForm: React.FC<UserFormProps> = ({
     }
   };
 
+  const formatPhoneNumber = (value: string): string => {
+    // Убираем все символы кроме цифр
+    const phoneNumber = value.replace(/\D/g, '');
+    
+    // Если номер начинается с 7, заменяем на +7
+    if (phoneNumber.startsWith('7') && phoneNumber.length === 11) {
+      return `+7 (${phoneNumber.slice(1, 4)}) ${phoneNumber.slice(4, 7)}-${phoneNumber.slice(7, 9)}-${phoneNumber.slice(9)}`;
+    }
+    
+    // Если номер начинается с 8, заменяем на +7
+    if (phoneNumber.startsWith('8') && phoneNumber.length === 11) {
+      return `+7 (${phoneNumber.slice(1, 4)}) ${phoneNumber.slice(4, 7)}-${phoneNumber.slice(7, 9)}-${phoneNumber.slice(9)}`;
+    }
+    
+    // Если номер начинается с 77 (Казахстан)
+    if (phoneNumber.startsWith('77') && phoneNumber.length === 11) {
+      return `+7 (${phoneNumber.slice(2, 5)}) ${phoneNumber.slice(5, 8)}-${phoneNumber.slice(8, 10)}-${phoneNumber.slice(10)}`;
+    }
+    
+    // Если номер уже начинается с +7
+    if (phoneNumber.startsWith('77') && phoneNumber.length === 12) {
+      return `+7 (${phoneNumber.slice(2, 5)}) ${phoneNumber.slice(5, 8)}-${phoneNumber.slice(8, 10)}-${phoneNumber.slice(10)}`;
+    }
+    
+    // Для других случаев просто форматируем как есть
+    if (phoneNumber.length >= 10) {
+      return `+7 (${phoneNumber.slice(0, 3)}) ${phoneNumber.slice(3, 6)}-${phoneNumber.slice(6, 8)}-${phoneNumber.slice(8, 10)}`;
+    }
+    
+    return value;
+  };
+
   const handleInputChange = (field: keyof UserFormData, value: string) => {
-    setFormData(prev => ({ ...prev, [field]: value }));
+    if (field === 'whatsapp') {
+      const formatted = formatPhoneNumber(value);
+      setFormData(prev => ({ ...prev, [field]: formatted }));
+    } else {
+      setFormData(prev => ({ ...prev, [field]: value }));
+    }
+    
     if (errors[field]) {
       setErrors(prev => ({ ...prev, [field]: '' }));
     }
@@ -138,7 +180,7 @@ const UserForm: React.FC<UserFormProps> = ({
               className={`form-input ${errors.whatsapp ? 'error' : ''}`}
               value={formData.whatsapp}
               onChange={(e) => handleInputChange('whatsapp', e.target.value)}
-              placeholder="Whatsapp номеріңіз"
+              placeholder="+7 (777) 123-45-67"
               disabled={isSubmitting}
             />
             {errors.whatsapp && <span className="error-message">{errors.whatsapp}</span>}
@@ -172,7 +214,7 @@ const UserForm: React.FC<UserFormProps> = ({
 
         {/* Footer */}
         <div className="form-footer">
-          JETOO ENGLISH LEVEL TEST
+          JETOO Masters
         </div>
       </div>
     </div>
