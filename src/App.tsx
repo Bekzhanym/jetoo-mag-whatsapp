@@ -3,13 +3,12 @@ import WelcomeScreen from './components/WelcomeScreen';
 import QuizScreen from './components/QuizScreen';
 import UserForm from './components/UserForm';
 import ResultScreen from './components/ResultScreen';
-import VideoScreen from './components/VideoScreen';
 import type { UserInfo } from './data/questions';
 import { openWhatsApp, createBonusMessage } from './utils/whatsapp';
 import { WHATSAPP_CONFIG } from './config/whatsapp';
 import './App.css';
 
-type Screen = 'welcome' | 'quiz' | 'userForm' | 'result' | 'video';
+type Screen = 'welcome' | 'quiz' | 'userForm' | 'result';
 
 function App() {
   const [currentScreen, setCurrentScreen] = useState<Screen>('welcome');
@@ -49,9 +48,6 @@ function App() {
     openWhatsApp(message, WHATSAPP_CONFIG.phoneNumber);
   };
 
-  const handleBackFromVideo = () => {
-    setCurrentScreen('result');
-  };
 
   return (
     <div className="App">
@@ -85,11 +81,6 @@ function App() {
         />
       )}
       
-      {currentScreen === 'video' && (
-        <VideoScreen
-          onBack={handleBackFromVideo}
-        />
-      )}
     </div>
   );
 }
